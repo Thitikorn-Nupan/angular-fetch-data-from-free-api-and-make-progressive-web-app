@@ -7,7 +7,10 @@ import {University} from "../entity/university";
   providedIn: 'root'
 })
 export class UniversitiesHttpService {
-  public  universitiesReplaySubject : ReplaySubject<University[]>;
+
+  public universitiesReplaySubject : ReplaySubject<University[]>;
+
+  // after inject you can publish universitiesReplaySubject observe
   constructor(private http: HttpClient) {
     this.universitiesReplaySubject = new ReplaySubject<University[]>()
     this.http.get<University[]>('http://universities.hipolabs.com/search?country=Thailand').subscribe((res) => {

@@ -7,12 +7,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { UniversitiesTableComponent } from './components/universities-table/universities-table.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import {HttpClientModule} from "@angular/common/http";
+import { TestAComponent } from './components/test-a/test-a.component';
+import { TestBComponent } from './components/test-b/test-b.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UniversitiesTableComponent,
-    MenubarComponent
+    MenubarComponent,
+    TestAComponent,
+    TestBComponent
   ],
   imports: [
     BrowserModule,
