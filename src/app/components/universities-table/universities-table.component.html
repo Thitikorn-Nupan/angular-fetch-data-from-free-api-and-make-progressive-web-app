@@ -15,21 +15,24 @@
     -->
   </div>
 
-  <table style="table-layout: fixed; max-width: 1050px; width: 1000px" class="mt-4 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 md:w-auto">
+  <table style="table-layout: fixed; max-width: 1050px; width: 1000px"
+         class="mt-4 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 md:w-auto">
     <!---->
     <thead style="display: block;" class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
-    <tr>
+      <tr>
       <th scope="col" class="px-6 py-3">
         #
       </th>
       <th style="" scope="col" class="px-6 py-3">
         Country
       </th>
-      <th *ngIf="universities.at(0)?.country==='Thailand'" scope="col" class="px-6 py-3">
+      <th *ngIf="universities.at(0)?.country === 'Thailand'" scope="col" class="px-6 py-3">
         Province
       </th>
       <!-- dynamic style -->
-      <th style="display: block; {{universities.at(0)?.country =='Thailand' ? 'margin-left: 100px;margin-right: 200px' : 'margin-right: 225px'}}" scope="col" class="px-6 py-3 ">
+      <th
+        style="display: block; {{universities.at(0)?.country =='Thailand' ? 'margin-left: 100px;margin-right: 200px' : 'margin-right: 225px'}}"
+        scope="col" class="px-6 py-3 ">
         University Name
       </th>
       <th scope="col" class="px-6 py-3">
@@ -39,11 +42,12 @@
     </thead>
     <!---->
     <ng-container *ngIf="enableSpinner">
-      <tbody class="w-full" style="overflow-y: auto; height: 450px; max-height: 450px;display: block; overflow-x: hidden">
-        <!-- spinner -->
+      <tbody class="w-full"
+             style="overflow-y: auto; height: 450px; max-height: 450px;display: block; overflow-x: hidden">
         <div class="text-center mt-3">
           <div role="status">
-            <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                 viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
                 fill="currentColor"/>
@@ -56,38 +60,39 @@
         </div>
       </tbody>
     </ng-container>
+    <!---->
     <ng-container *ngIf="!enableSpinner">
-      <tbody class="w-full" style="overflow-y: auto; height: 450px; max-height: 450px;display: block; overflow-x: hidden">
-        <tr style="width: 1000px; display: inherit" *ngFor="let university of universities; let i = index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-          <th style="width: 15px" scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {{ i + 1 }}
-          </th>
-          <td style="width:100px" class="px-6 py-4">
-            {{ university.country }}
-          </td>
-          <td style="width: 200px;" *ngIf="universities.at(0)?.country==='Thailand'" class="px-6 py-4 w-fit">
-            <!-- **** -->
-            {{ university["state-province"] }}
-          </td>
-          <td style="width: 350px;" class="px-6 py-4">
-            {{ university.name }}
-          </td>
-          <td class="px-6 py-4">
-            <div class="flex items-center">
-              {{ university.domains[0] }}
-              <a style="margin-left: 5px" [href]="university.web_pages">
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                     width="24" height="24" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/>
-                </svg>
-              </a>
-            </div>
-
-          </td>
-        </tr>
+      <tbody class="w-full"
+             style="overflow-y: auto; height: 450px; max-height: 450px;display: block; overflow-x: hidden">
+        <tr style="width: 1000px; display: inherit" *ngFor="let university of universities; let i = index"
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th style="width: 15px" scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          {{ i + 1 }}
+        </th>
+        <td style="width:100px" class="px-6 py-4">
+          {{ university.country }}
+        </td>
+        <td style="width: 200px;" *ngIf="universities.at(0)?.country==='Thailand'" class="px-6 py-4 w-fit">
+          {{ university["state-province"] }}
+        </td>
+        <td style="width: 350px;" class="px-6 py-4">
+          {{ university.name }}
+        </td>
+        <td class="px-6 py-4">
+          <div class="flex items-center">
+            {{ university.domains[0] }}
+            <a style="margin-left: 5px" [href]="university.web_pages">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                   width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/>
+              </svg>
+            </a>
+          </div>
+        </td>
+      </tr>
       </tbody>
-
     </ng-container>
   </table>
 </div>

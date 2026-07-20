@@ -15,8 +15,8 @@ import {University} from "../../entity/university";
   styleUrl: './universities-table.component.css'
 })
 export class UniversitiesTableComponent implements OnInit {
-  protected countries : string [] = ['Haiti','Turkey','Philippines','Morocco','China','Brazil','Japan','Thailand']
-  protected styleColors : string [] = [
+  protected readonly countries : string [] = ['Haiti','Turkey','Philippines','Morocco','China','Brazil','Japan','Thailand']
+  protected readonly styleColors : string [] = [
     'bg-red-100 text-red-800 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 text-xs',
     'bg-green-100 text-green-800 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300 text-xs',
     'bg-pink-100 text-pink-800 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300 text-xs',
@@ -34,43 +34,38 @@ export class UniversitiesTableComponent implements OnInit {
   }
 
   /**
-  ngAfterViewChecked(): void {
-    this.changeDetectorRef.detectChanges()
-  }
+    ngAfterViewChecked(): void {
+      this.changeDetectorRef.detectChanges()
+    }
 
-  ngAfterViewInit(): void {
-    this.changeDetectorRef.detectChanges()
+    ngAfterViewInit(): void {
+      this.changeDetectorRef.detectChanges()
 
-  }
-  protected getStyleColor() {
-    const minCeiled = Math.ceil(0);
-    const maxFloored = Math.floor(this.styleColors.length);
-    const index = Math.floor(Math.random() * (maxFloored - minCeiled));
-    return this.styleColors[index]
-  }
+    }
+    protected getStyleColor() {
+      const minCeiled = Math.ceil(0);
+      const maxFloored = Math.floor(this.styleColors.length);
+      const index = Math.floor(Math.random() * (maxFloored - minCeiled));
+      return this.styleColors[index]
+    }
   */
-
 
   ngOnInit(): void {
     this.loadUniversities();
   }
 
-  private loadUniversities() {
-    this.universitiesHttpService.universitiesReplaySubject.subscribe((universities: University[]) => {
-      this.universities = universities
-    })
+  private loadUniversities() : void {
+    this.universitiesHttpService.universitiesReplaySubject.subscribe((universities: University[]) => this.universities = universities)
   }
 
-  protected onUserClickedCountry(country: string) {
+  protected onUserClickedCountry(country: string) : void  {
     this.enableSpinner = true;
     this.changeStyleColorsByCountry(country)
     this.universitiesHttpService.setUniversitiesByCountry(country) // this.universities will change because it's observe concept
-    setTimeout(()=> {
-      this.enableSpinner = false;
-    },1800)
+    setTimeout(()=> this.enableSpinner = false,1800)
   }
 
-  private changeStyleColorsByCountry(countrySearch : string) {
+  private changeStyleColorsByCountry(countrySearch : string) : void {
     const indexClicked = this.countries.findIndex((country) => country === countrySearch) // find index of countries by countrySearch
     for (let i = 0; i < this.countries.length; i++) {
       if (i === indexClicked) {
